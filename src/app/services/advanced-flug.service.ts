@@ -7,10 +7,6 @@ export class AdvancedFlugService implements FlugService {
   private fluege: Flug[] = fluege;
 
   flugSuchen(von: string, nach: string): Flug[] {
-    if (von && nach) {
-      return this.fluege.filter(flug => flug.from === von && flug.to === nach);
-    } else {
-      return [];
-    }
+    return this.fluege.filter(flug => flug.from === von && flug.to === nach);
   }
 }
