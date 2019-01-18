@@ -6,13 +6,17 @@
 
   <div class="main-panel">
       <navbar-cmp></navbar-cmp>
-
       <div class="content">
           <div class="fluege">
             <h2>Flüge</h2>
-            <pre>{{fluege | json}}</pre>
+            <ul class="fluege-list">
+              <li *ngFor="let flug of fluege" [flugDetails]="flug">
+                <p>Von: {{flug.from | city}}</p>
+                <p>Nach: {{flug.to | city}}</p>
+                <p>Datum: {{flug.date | date}}</p>
+              </li>
+            </ul>
           </div>
       </div>
   </div>
-
 </div>
