@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Flug } from './entity/flug';
-import { FlugService } from './services/flug.service';
+import { FlugService } from './core/flug.service';
 
 @Component({
   selector: 'flight-app',

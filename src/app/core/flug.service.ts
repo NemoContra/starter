@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fluege, Flug } from '../entity/flug';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FlugService {
   private fluege: Flug[] = fluege;
 
