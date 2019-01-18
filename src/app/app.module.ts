@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { FlugSuchenComponent } from './flug-suchen/flug-suchen.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlugSuchenComponent
   ],
   providers: [
   ],
