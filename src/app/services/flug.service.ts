@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { fluege, Flug } from '../entity/flug';
+import { Flug } from '../entity/flug';
+import { AdvancedFlugService } from './advanced-flug.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+  useClass: AdvancedFlugService
 })
-export class FlugService {
-  private fluege: Flug[] = fluege;
-
-  public flugSuchen(von: string, nach: string): Flug[] {
-    return this.fluege.filter(flug => {
-      return flug.from === von && flug.to === nach;
-    });
-  }
+export abstract class FlugService {
+  abstract flugSuchen(von: string, nach: string): Flug[];
 }
