@@ -23,6 +23,15 @@ export class FlightService implements AbstractFlightService {
     return this.http.get<Flight[]>(url, {headers, params});
   }
 
+  findById(id: string): Observable<Flight> {
+    const url = 'http://www.angular.at/api/flight';
+    const params = new HttpParams()
+      .set('id', id);
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json');
+    return this.http.get<Flight>(url, { params, headers});
+  }
+
   save(flight: Flight): Observable<Flight> {
     let url = 'http://www.angular.at/api/flight';
 
