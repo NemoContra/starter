@@ -13,11 +13,17 @@
       <button
         class="btn btn-default"
         *ngIf="!selected"
-        (click)="select()">Select</button>
+        (click)="select()">Select
+      </button>
       <button
         class="btn btn-default"
         *ngIf="selected"
-        (click)="deselect()">Remove</button>
+        (click)="deselect()">Remove
+      </button>
+      <a class="btn btn-default"
+         [routerLink]="['/flight-edit', item.id, { showDetails: true }]">
+        Edit
+      </a>
 
     </p>
 
