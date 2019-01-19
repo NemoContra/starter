@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightService } from './flight-search/flight.service';
+import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { FlightService } from './flight-search/flight.service';
   declarations: [
     FlightSearchComponent,
     FlightCardComponent,
-    FlightEditComponent
+    FlightEditComponent,
+    PassengerSearchComponent
   ],
   providers: [
     FlightService
