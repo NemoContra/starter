@@ -6,14 +6,55 @@
 
   <div class="content">
 
-    <form>
+    <form #form="ngForm">
       <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" class="form-control">
+        <input name="from" [(ngModel)]="from"
+               required
+               minlength="3"
+               maxlength="15"
+               pattern="[a-zA-Z ]*"
+               asyncCity
+               [city]="['Graz', 'Hamburg']">
+
+        <pre>{{form?.controls['from']?.errors | json}}</pre>
       </div>
       <div class="form-group">
         <label>To:</label>
         <input [(ngModel)]="to" name="to" class="form-control">
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['from']?.hasError('minlength')">
+        ... minlength ...
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['from']?.hasError('maxlength')">
+        ... maxlength ...
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['from']?.hasError('required')">
+        ... required ...
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['from']?.hasError('pattern')">
+        ... pattern ...
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['from']?.hasError('city')">
+        ... city ...
+      </div>
+
+      <div *ngIf="form?.controls['from']?.hasError('asyncCity')">
+        ... asyncCity ...
+      </div>
+
+      <div *ngIf="form?.controls['from']?.pending">
+        ... Executing Async Validator ...
       </div>
 
       <div class="form-group">
