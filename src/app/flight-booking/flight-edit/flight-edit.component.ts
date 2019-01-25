@@ -52,9 +52,9 @@ export class FlightEditComponent implements OnInit {
       from: [null, [Validators.required, Validators.minLength(3), validateCity(['Vienna', 'Berlin', 'Gleisdorf'])]],
       to:   [null],
       date: [null]
-    });
+    }, {validators: [validateRoundTrip]});
 
-    this.editForm.validator = validateRoundTrip;
+    // this.editForm.validator = validateRoundTrip;
 
     console.log(this.editForm.value);
     console.log(this.editForm.valid);
@@ -67,7 +67,7 @@ export class FlightEditComponent implements OnInit {
   }
 
   save() {
-    this.flightService.save(this.flight).subscribe(
+    this.flightService.save({...this.flight, ...this.editForm.value}).subscribe(
       flight => {
         this.flight = flight;
         this.errors = 'Saving was successful!';
