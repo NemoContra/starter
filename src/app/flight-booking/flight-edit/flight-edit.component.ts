@@ -38,6 +38,7 @@ export class FlightEditComponent implements OnInit {
           flight => {
             this.flight = flight;
             this.errors = '';
+            this.editForm.patchValue(flight);
           },
           err => {
             this.errors = 'Fehler beim Laden';

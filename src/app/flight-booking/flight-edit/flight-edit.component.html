@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <label>From:</label>
-    <input  formControlName="from">
+    <input class="form-control" formControlName="from">
     errors: {{editForm.controls['from'].errors | json}}
     <div class="text-danger" *ngIf="editForm.controls['from'].hasError('minlength')">
       ...minlength...
@@ -28,7 +28,7 @@
     <div class="text-danger" *ngIf="editForm.controls['from'].hasError('city')">
       ...city...
     </div>
-    <div class="text-danger" *ngIf="editForm?.hasError('roundTrip')">
+    <div class="text-danger" *ngIf="editForm.hasError('roundTrip')">
       ...roundTrip...
     </div>
   </div>
