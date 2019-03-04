@@ -3,7 +3,7 @@ import { Flight } from '../../entities/flight';
 import { AbstractFlightService } from './abstract-flight.service';
 
 @Component({
-  selector: 'app-flight-search',
+  selector: 'flight-search',
   templateUrl: './flight-search.component.html'
 })
 export class FlightSearchComponent implements OnInit {

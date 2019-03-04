@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Flight } from '../../entities/flight';
 
 @Component({
-  selector: 'app-flight-card',
+  selector: 'flight-card',
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css']
 })
