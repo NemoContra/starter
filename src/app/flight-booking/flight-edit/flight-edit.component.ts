@@ -5,7 +5,7 @@ import { FlightService } from '../flight-search/flight.service';
 import { Flight } from '../../entities/flight';
 
 @Component({
-  selector: 'app-flight-edit',
+  selector: 'flight-edit',
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css']
 })
