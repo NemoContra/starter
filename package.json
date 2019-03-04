@@ -4,12 +4,15 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "tsc": "tsc"
+    "start": "ng serve --project components-demo",
+    "build": "ng build --project components-demo --prod",
+    "test": "ng test --project components-demo",
+    "lint": "ng lint --project components-demo",
+    "e2e": "ng e2e --project components-demo-e2e",
+    "start:prod": "cd dist/components-demo && ws",
+    "tdd": "ng test --project components-demo --browsers Chrome --code-coverage",
+    "test:ci": "ng test --project components-demo --browsers Chrome_without_security --code-coverage --watch=false",
+    "ci": "npm-run-all lint test:ci e2e build start:prod"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +48,8 @@
     "karma-coverage-istanbul-reporter": "^2.0.5",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "local-web-server": "^2.6.1",
+    "npm-run-all": "^4.1.5",
     "protractor": "~5.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",

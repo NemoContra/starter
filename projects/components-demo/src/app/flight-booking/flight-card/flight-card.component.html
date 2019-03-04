@@ -1,0 +1,7 @@
+<div *ngFor="let flight of flights" [class.selected]="flight.id === selectedFlight?.id" class="flight-box">
+  <p>From: {{flight.from}}</p>
+  <p>To: {{flight.to}}</p>
+  <p>Delayed: {{flight.delayed ? 'yes' : 'no'}}</p>
+  <p>{{flight.date | date}}</p>
+  <button type="button" (click)="onSelectFlight(flight)">Select</button>
+</div>
