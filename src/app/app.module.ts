@@ -14,15 +14,15 @@ import { FlugDetailsDirective } from './shared/flug-details.directive';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
-    CityPipe
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
     FlugSuchenComponent,
-    FlugDetailsDirective
+    FlugDetailsDirective,
+    CityPipe
   ],
   providers: [
   ],
