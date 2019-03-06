@@ -8,6 +8,7 @@ import { FlugSuchenComponent } from './flug-suchen/flug-suchen.component';
 import { CityPipe } from './shared/city.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FlugDetailsDirective } from './shared/flug-details.directive';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    FlugSuchenComponent
+    FlugSuchenComponent,
+    FlugDetailsDirective
   ],
   providers: [
   ],
