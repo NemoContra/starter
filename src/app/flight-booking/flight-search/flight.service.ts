@@ -11,12 +11,12 @@ export class FlightService implements AbstractFlightService {
   }
 
   find(from: string, to: string): Observable<Flight[]> {
-    let url = 'http://www.angular.at/api/flight';
+    const url = 'http://www.angular.at/api/flight';
 
-    let headers = new HttpHeaders()
+    const headers = new HttpHeaders()
       .set('Accept', 'application/json');
 
-    let params = new HttpParams()
+    const params = new HttpParams()
       .set('from', from)
       .set('to', to);
 
@@ -24,9 +24,9 @@ export class FlightService implements AbstractFlightService {
   }
 
   save(flight: Flight): Observable<Flight> {
-    let url = 'http://www.angular.at/api/flight';
+    const url = 'http://www.angular.at/api/flight';
 
-    let headers = new HttpHeaders()
+    const headers = new HttpHeaders()
       .set('Accept', 'application/json');
 
     return this.http.post<Flight>(url, flight, { headers });
