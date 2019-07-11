@@ -13,7 +13,14 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    SharedModule.forRoot()
+    /**
+     * Nur im AppModule mit forRoot aufrufen (forRoot == 'Fürs RootModule')
+     * Hier wird auch die Config bereitgestelt und ist damit für die ganze App
+     * gültig
+     */
+    SharedModule.forRoot({
+      baseUrl: 'http://www.angular.at/api'
+    })
   ],
   declarations: [
     AppComponent,
