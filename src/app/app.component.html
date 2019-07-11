@@ -8,7 +8,7 @@
       <navbar-cmp></navbar-cmp>
 
       <div class="content">
-        <ng-container *ngIf="flights$ | async; else loading; let flights">
+        <ng-container *ngIf="flights$ | async as flights; else loading">
           <div *ngFor="let flight of flights">
             Von: {{flight.from}} Nach: {{flight.to}}
           </div>
