@@ -1,19 +1,39 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output, QueryList,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
 import { Flight } from '../../entities/flight';
+
+@Directive({
+  selector: '[flightSelectDeselect]'
+})
+export class FlightSelectDeselectDirective { }
 
 @Component({
   selector: 'app-flight-card',
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css']
 })
-export class FlightCardComponent implements OnInit {
+export class FlightCardComponent implements AfterViewInit {
   constructor() { }
 
   @Input() item: Flight;
   @Input() selected: boolean;
   @Output() selectedChange = new EventEmitter<boolean>();
 
-  ngOnInit() {
+  @ViewChildren(FlightSelectDeselectDirective, {
+    read: ElementRef
+  }) private selectDeselectButtons: QueryList<ElementRef<HTMLButtonElement>>;
+
+  ngAfterViewInit() {
   }
 
   select() {
@@ -24,5 +44,9 @@ export class FlightCardComponent implements OnInit {
   deselect() {
     this.selected = false;
     this.selectedChange.next(this.selected);
+  }
+
+  onClick(): void {
+    this.selectDeselectButtons.first.nativeElement.focus();
   }
 }
