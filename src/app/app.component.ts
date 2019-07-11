@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
 import { FlightService } from './flight.service';
+import { filter, publishReplay, refCount } from 'rxjs/operators';
 
 @Component({
   selector: 'flight-app',
@@ -14,6 +15,10 @@ export class AppComponent implements OnInit {
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
-    this.flights$ = this.flightService.getFlights();
+    this.flights$ = this.flightService.getFlights().pipe(
+      filter(flights => flights.length > 0),
+      publishReplay(1),
+      refCount()
+    );
   }
 }
