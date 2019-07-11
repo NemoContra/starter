@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
-import { FlightService } from './flight.service';
 import { filter, publishReplay, refCount } from 'rxjs/operators';
+import { FlightService } from './shared/flight.service';
 
 @Component({
   selector: 'flight-app',
