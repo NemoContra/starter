@@ -1,15 +1,23 @@
 <div class="wrapper">
 
   <div class="sidebar" data-background-color="white" data-active-color="danger">
-      <sidebar-cmp></sidebar-cmp>
+    <sidebar-cmp></sidebar-cmp>
   </div>
 
   <div class="main-panel">
-      <navbar-cmp></navbar-cmp>
+    <navbar-cmp></navbar-cmp>
 
-      <div class="content">
-          {{title}}
-      </div>
+    <ng-template #error>
+      <div>Es ist ein Fehler aufgetreten</div>
+    </ng-template>
+
+    <div class="content">
+      <ul *ngIf="topicResponse$ | async as topicResponse">
+        <ng-container *ngIf="topicResponse.status === 'success'; else error">
+          <li *ngFor="let topic of topicResponse.payload">{{topic}}</li>
+        </ng-container>
+      </ul>
+    </div>
   </div>
 
 </div>
