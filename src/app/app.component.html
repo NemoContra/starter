@@ -10,13 +10,13 @@
       <div class="content">
         <p>Flüge suchen</p>
         <form class="form-group" [formGroup]="formGroup"
-              (submit)="onSubmit()">
+              (submit)="onClick$.next()">
           <input class="form-control" formControlName="von"
                  placeholder="Abflug von">
           <br>
           <button type="submit" class="btn">Suchen</button>
         </form>
-        <pre>{{flights | json}}</pre>
+        <pre>{{flights$ | async | json}}</pre>
       </div>
   </div>
 
