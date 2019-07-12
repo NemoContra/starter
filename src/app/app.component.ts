@@ -19,26 +19,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  private isDestroyed$ = new Subject<void>();
-
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.subscription.add(this.formGroup.get('von').valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(von => this.getFlights(von)),
-      // Muss immer ganz unten als letztes stehen!
-      takeUntil(this.isDestroyed$)
+      switchMap(von => this.getFlights(von))
     ).subscribe(flights => this.flights = flights));
 
-    this.subscription.add(this.formGroup.valueChanges.pipe(
-      takeUntil(this.isDestroyed$)
-    ).subscribe());
+    this.subscription.add(this.formGroup.valueChanges.subscribe());
   }
 
   ngOnDestroy(): void {
-    this.isDestroyed$.next();
     this.subscription.unsubscribe();
   }
 
