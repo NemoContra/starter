@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Flight } from './flight';
 import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
 
@@ -17,26 +17,29 @@ export class AppComponent implements OnInit, OnDestroy {
     von: new FormControl('')
   });
 
+  private subscription = new Subscription();
+
   private isDestroyed$ = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.formGroup.get('von').valueChanges.pipe(
+    this.subscription.add(this.formGroup.get('von').valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
       switchMap(von => this.getFlights(von)),
       // Muss immer ganz unten als letztes stehen!
       takeUntil(this.isDestroyed$)
-    ).subscribe(flights => this.flights = flights);
+    ).subscribe(flights => this.flights = flights));
 
-    this.formGroup.valueChanges.pipe(
+    this.subscription.add(this.formGroup.valueChanges.pipe(
       takeUntil(this.isDestroyed$)
-    ).subscribe();
+    ).subscribe());
   }
 
   ngOnDestroy(): void {
     this.isDestroyed$.next();
+    this.subscription.unsubscribe();
   }
 
   onSubmit(): void {
