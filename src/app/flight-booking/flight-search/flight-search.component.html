@@ -9,7 +9,8 @@
     <form #form="ngForm">
       <div class="form-group">
         <label>From:</label>
-        <input name="from" [(ngModel)]="from"
+        <input class="form-control"
+               name="from" [(ngModel)]="from"
                required
                minlength="3"
                maxlength="15"
