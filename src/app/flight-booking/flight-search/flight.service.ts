@@ -6,7 +6,6 @@ import { AbstractFlightService } from './abstract-flight.service';
 
 @Injectable({ providedIn: 'root' })
 export class FlightService implements AbstractFlightService {
-
   constructor(private http: HttpClient) {
   }
 
@@ -20,7 +19,7 @@ export class FlightService implements AbstractFlightService {
       .set('from', from)
       .set('to', to);
 
-    return this.http.get<Flight[]>(url, {headers, params});
+    return this.http.get<Flight[]>(url, { headers, params });
   }
 
   save(flight: Flight): Observable<Flight> {
@@ -31,5 +30,4 @@ export class FlightService implements AbstractFlightService {
 
     return this.http.post<Flight>(url, flight, { headers });
   }
-
 }

@@ -7,12 +7,11 @@ import { Flight } from '../../entities/flight';
   styleUrls: ['./flight-card.component.css']
 })
 export class FlightCardComponent implements OnInit {
-
-  constructor() { }
-
   @Input() item: Flight;
   @Input() selected: boolean;
   @Output() selectedChange = new EventEmitter<boolean>();
+
+  constructor() { }
 
   ngOnInit() {
   }
@@ -26,6 +25,4 @@ export class FlightCardComponent implements OnInit {
     this.selected = false;
     this.selectedChange.next(this.selected);
   }
-
-
 }
