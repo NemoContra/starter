@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="header">
+    <h1 class="title">Flight Edit</h1>
+  </div>
+  <div class="content">
+    <p>Id: {{id}}</p>
+    <p>ShowDetails: {{showDetails}}</p>
+  </div>
+</div>
+<form *ngIf="flight">
+
+  <div class="form-group">
+    <label>Id:</label>
+    <input [(ngModel)]="flight.id" name="id" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>From:</label>
+    <input [(ngModel)]="flight.from" name="from"
+           class="form-control">
+  </div>
+
+  <!-- Fügen Sie hier Felder für die weiteren Eigenschaften -->
+  <!-- des Fluges hinzu -->
+
+  <button class="btn btn-default" (click)="save()">Save</button>
+
+</form>
+
