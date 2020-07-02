@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true
 })
 export class CityPipe implements PipeTransform {
-  transform(value: string, fmt: string): string {
+  transform(value: string, fmt: 'long' | 'short'): string {
     let short: string;
     let long: string;
 

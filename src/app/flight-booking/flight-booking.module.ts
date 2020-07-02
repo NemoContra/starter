@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightCardComponent } from './flight-card/flight-card.component';
+import { CityPipe } from '../shared/city.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { FlightCardComponent } from './flight-card/flight-card.component';
     FlightSearchComponent,
     FlightCardComponent
   ],
-  providers: [],
+  providers: [
+  ],
   exports: [
     FlightSearchComponent
   ]
