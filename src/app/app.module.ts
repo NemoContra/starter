@@ -16,7 +16,7 @@ import { APP_ROUTES } from './app.routes';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(APP_ROUTES, {useHash: true}),
+    RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
     FlightBookingModule
   ],
