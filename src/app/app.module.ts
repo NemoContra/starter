@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { HomeComponent } from './home/home.component';
 import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
 import { APP_ROUTES } from './app.routes';
@@ -17,8 +16,7 @@ import { APP_ROUTES } from './app.routes';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(APP_ROUTES),
-    HttpClientModule,
-    FlightBookingModule
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
