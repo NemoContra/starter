@@ -6,96 +6,21 @@
 
   <div class="content">
 
-    <form #form="ngForm">
+    <form [formGroup]="formGroup">
       <div class="form-group">
         <label>From:</label>
-        <input name="from" [(ngModel)]="from"
-               required
-               minlength="3"
-               maxlength="15"
-               pattern="[a-zA-Z ]*"
-               asyncCity
-               [city]="['Graz', 'Hamburg']">
-
-        <pre>{{form?.controls['from']?.errors | json}}</pre>
+        <input class="form-control" required formControlName="from">
       </div>
       <div class="form-group">
         <label>To:</label>
-        <input [(ngModel)]="to" name="to" class="form-control">
-      </div>
-
-      <div class="text-danger"
-           *ngIf="form?.controls['from']?.hasError('minlength')">
-        ... minlength ...
-      </div>
-
-      <div class="text-danger"
-           *ngIf="form?.controls['from']?.hasError('maxlength')">
-        ... maxlength ...
-      </div>
-
-      <div class="text-danger"
-           *ngIf="form?.controls['from']?.hasError('required')">
-        ... required ...
-      </div>
-
-      <div class="text-danger"
-           *ngIf="form?.controls['from']?.hasError('pattern')">
-        ... pattern ...
-      </div>
-
-      <div class="text-danger"
-           *ngIf="form?.controls['from']?.hasError('city')">
-        ... city ...
-      </div>
-
-      <div *ngIf="form?.controls['from']?.hasError('asyncCity')">
-        ... asyncCity ...
-      </div>
-
-      <div *ngIf="form?.controls['from']?.pending">
-        ... Executing Async Validator ...
-      </div>
-
-      <div class="form-group">
-        <button
-          [disabled]="!to || !from"
-          (click)="search()"
-          class="btn btn-default">Search
-        </button>
+        <input class="form-control" required formControlName="to">
       </div>
     </form>
 
   </div>
 </div>
-<!--<div class="card">
-
-  <table class="table table-contensed" *ngIf="flights.length > 0">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tr *ngFor="let f of flights"
-        [class.active]="f === selectedFlight">
-      <td>{{f.id}}</td>
-      <td>{{f.from | city:'short'}}</td>
-      <td>{{f.to | city:'long'}}</td>
-      <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
-      <td>
-        <a (click)="select(f)">Select</a>
-      </td>
-    </tr>
-  </table>
-
-</div>-->
-<app-flight-edit></app-flight-edit>
 <div class="row">
-  <div *ngFor="let f of flights"
+  <div *ngFor="let f of flights$ | async"
        class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <app-flight-card
       [item]="f"
